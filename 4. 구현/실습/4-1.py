@@ -1,1 +1,1 @@
-실습 문제 풀 것
+print('tomorrow...')
