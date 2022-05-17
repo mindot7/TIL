@@ -230,6 +230,7 @@ $ pip install django-cors-headers
 
 
 
+
 ## DRF Authentication
 
 ### Basic Token Based
