@@ -61,7 +61,6 @@ A.append(x):
 
 
 
-
 ## 순차적 자료구조 (Sequential Data Structures)
 
 1. 배열, 리스트
