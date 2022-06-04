@@ -34,3 +34,28 @@ JSX: JavaScript를 확장한 문법
 <script type="text/babel">
 ```
 
+
+
+
+
+## 2. 6  JSX part Two
+
+= () => : arrow function
+
+
+
+
+
+컴포넌트의 첫 글자는 반드시 대문자여야 한다
+
+```html
+const Container = (
+      <div>
+        <Title /> <Button />
+      </div>
+    )
+```
+
+
+
+JSX는 어플리케이션을 여러 가지 작은 요소로 나누어 관리할 수 있게 해준다
