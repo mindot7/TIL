@@ -33,4 +33,4 @@ JSX: JavaScript를 확장한 문법
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
 ```
-
+다음 강의에서는 createElement를 생략하는 방법을 배울 것이다
