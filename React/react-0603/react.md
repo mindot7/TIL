@@ -1,4 +1,4 @@
-1. React JS와 ReactDOM 코드 import
+React JS와 ReactDOM 코드 import
 
 ```html
 <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
@@ -14,4 +14,23 @@ ReactDOM
     - ReactDOM이 React element들을 가져다놓을 곳
 
 
+
+CreateElement를 안 쓴다!!
+
+JSX: JavaScript를 확장한 문법
+
+- HTML 코드와 유사
+
+
+
+브라우저에서 오류가 남
+
+=> Babel을 써야 한다
+
+- JSX로 적은 코드를 브라우저가 이해할 수 있는 형태로 바꿔준다
+
+```html
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+```
 
