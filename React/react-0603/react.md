@@ -59,3 +59,4 @@ const Container = (
 
 
 JSX는 어플리케이션을 여러 가지 작은 요소로 나누어 관리할 수 있게 해준다
+다음 강의에서는 createElement를 생략하는 방법을 배울 것이다
