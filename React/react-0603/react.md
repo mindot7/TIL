@@ -38,7 +38,7 @@ JSX: JavaScript를 확장한 문법
 
 
 
-## 2. 6  JSX part Two
+## 2. 6  JSX part.2
 
 = () => : arrow function
 
@@ -68,4 +68,29 @@ JSX는 어플리케이션을 여러 가지 작은 요소로 나누어 관리할 
 ## 3.0 Understanding State
 
 state: 데이터가 저장되는 곳
+
+
+
+## 3.1  setState part.1
+
+```html
+React.useState()
+```
+
+--> console창에 [undefined, f] == [초기값, 함수]
+
+```html
+const x = [1, 2, 3]
+const [a, b, c] = x
+```
+
+a는 1, b는 2, c는 3
+
+- JS의 문법
+
+
+
+
+
+
 
