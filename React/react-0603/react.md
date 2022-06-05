@@ -113,5 +113,17 @@ const root = document.getElementById("root")
 
 
 
+## 3.3 Recap
+
+modifier 함수를 가지고 state를 변경할 때 컴포넌트 전체가
+
+새로운 값을 가지고 재생성 된다
+
+컴포넌트란? function App
+
+
+
+**state가 바뀌면 리렌더링이 일어난다**
+
 
 
