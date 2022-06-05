@@ -126,3 +126,15 @@ modifier 함수를 가지고 state를 변경할 때 컴포넌트 전체가
 **state가 바뀌면 리렌더링이 일어난다**
 
 
+
+
+
+## 3.4 state Functions
+
+함수를 전달하기 (그대로 설정하는 것 대신!)
+
+```html
+// setCounter(counter + 1)
+        setCounter((current) => current + 1)
+```
+
