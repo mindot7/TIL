@@ -90,6 +90,27 @@ a는 1, b는 2, c는 3
 
 
 
+## 3.2 setState part.2
+
+```html
+const root = document.getElementById("root")
+    function App() {
+      const [counter, setCounter] = React.useState(0)
+      const onClick = () => {
+        setCounter(counter + 1)
+      }
+      return(
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={onClick}>Click me</button>
+        </div>
+      )
+    }
+    ReactDOM.render(<App />, root)
+```
+
+
+
 
 
 
