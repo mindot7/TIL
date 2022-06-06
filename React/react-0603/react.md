@@ -270,3 +270,61 @@ function App() {
     ReactDOM.render(<App />, root)
 ```
 
+
+
+
+
+## 3.8 Recap
+
+```html
+function App() {
+      const [amount, setAmount] = React.useState(0)
+      const [flipped, setFlipped] = React.useState(false)
+		// flipped === false 인 상태로 시작
+      const onChange = (event) => {
+        setAmount(event.target.value)
+      }
+      const reset = () => setAmount(0)
+      const onFlip = () => {
+        reset()
+        setFlipped((current) => !current)
+			// current 값 바꿔주기ㅏ
+      }
+      return (
+        <div>
+          <h1>Super Converter</h1>
+          <div>
+            <label htmlFor="minutes">Minutes</label>
+            <input 
+              value={flipped ? amount * 60: amount}
+                   // flipped -> amount * 60
+              	   // X flipped -> amount
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange = {onChange}
+              disabled = {flipped}
+            />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input
+              value={flipped ? amount: Math.round(amount/60)}
+              id="hours"
+              placeholder="Hours"
+              type="number"
+              disabled = {!flipped}
+              onChange = {onChange}
+            />
+          </div>
+          <button onClick = {reset}>Rest</button>
+          <button onClick = {onFlip}>
+              {flipped ? "Turn back" : "Flip!"}
+          </button>
+        </div>
+        )
+      }
+    const root = document.getElementById("root")
+    ReactDOM.render(<App />, root)
+```
+
