@@ -171,3 +171,49 @@ function App() {
     ReactDOM.render(<App />, root)
 ```
 
+
+
+
+
+## 3.6 State Practice part.1
+
+```html
+function App() {
+      const [minutes, setMinutes] = React.useState(0)
+      const onChange = (event) => {
+        setMinutes(event.target.value)
+      }
+      const reset = () => {
+        setMinutes(0)  #초기화
+      }
+      return(
+        <div>
+          <div>
+            <h1 className="hi">Super Converter</h1>
+            <label htmlFor="minutes">Minutes</label>
+            <input 
+              value = {minutes}
+              id="minutes"
+              placeholder="Minutes"
+              type="number"
+              onChange = {onChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="hours">Hours</label>
+            <input
+              value = {minutes/60}  # 분을 시간으로 바꿔주기
+              id="hours"
+              placeholder="Hours"
+              type="number"
+              disabled
+            />
+          </div>
+          <button onClick = {reset}>Rest</button>
+        </div>
+        )
+    }
+    const root = document.getElementById("root")
+    ReactDOM.render(<App />, root)
+```
+
