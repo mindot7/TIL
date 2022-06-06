@@ -138,3 +138,36 @@ modifier 함수를 가지고 state를 변경할 때 컴포넌트 전체가
         setCounter((current) => current + 1)
 ```
 
+
+
+
+
+## 3.5 Input and State
+
+```html
+function App() {
+      const [minutes, setMinutes] = React.useState()
+      const onChange = (event) => {
+        setMinutes(event.target.value)
+      }
+      return(
+        <div>
+          <h1 className="hi">Super Converter</h1>
+          <label htmlFor="minutes">Minutes</label> #'htmlFor'
+          <input 
+            value = {minutes}
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+            onChange = {onChange}
+          />
+          <h4>You want to convert {minutes}</h4>
+          <label htmlFor="hours">Hours</label>
+          <input id="hours" placeholder="Hours" type="number" />
+          </div>
+        )
+    }
+    const root = document.getElementById("root")
+    ReactDOM.render(<App />, root)
+```
+
