@@ -85,3 +85,14 @@ const MemorizedBtn = React.memo(Btn)
         </div>)
 ```
 
+
+
+
+
+
+
+## 4.2 Prop Types
+
+```html
+```
+
