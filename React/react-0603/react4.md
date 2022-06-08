@@ -93,5 +93,40 @@ const MemorizedBtn = React.memo(Btn)
 ## 4.2 Prop Types
 
 ```html
+<script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+...
+// component
+    function Btn({ text, fontSize = 14 }) {
+      return (
+        <button
+         ...
+        >{text}
+        </button>
+      )
+    }
+    Btn.propTypes = {
+      text: PropTypes.string.isRequired,
+      fontSize: PropTypes.number,
+    }
+    // JSX
+    function App() {
+      return (
+        <div>
+          <Btn text="Save Changes" fontSize={18} />
+          <Btn text={"Continue"} />
+        </div>
+      )
+    }  
+      const root = document.getElementById("root")
+    ReactDOM.render(<App />, root)
+```
+
+
+
+
+
+## 4.3 Recap
+
+```html
 ```
 
