@@ -162,9 +162,118 @@ npm i prop-types
 ```js
 # src.Button.js
 import PropTypes from "prop-types"
+
+function Button({ text }) {
+  return <button>{text}</button>
+}
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+}
+export default Button
 ```
 
-- import PropTypes from "prop-types"
+
+
+
+
+style.css 만들기
+
+```css
+button {
+  color:white;
+  background-color: tomato
+}
+```
+
+
+
+index.js에서 import 해주기
+
+```js
+import "./style.css"
+```
+
+
+
+Button.js에서 button style 지정해주기 (필요없는듯??)
+
+```js
+function Button(
+	return(
+    <button 
+    style={{
+      backgroundColor: "tomato",
+      color: "white",
+  }}
+  >
+    )
+)
+```
+
+
+
+Button.module.css 만들고 내용 적기
+
+```css
+.btn {
+  color: white;
+  background-color: tomato;
+}
+```
+
+
+
+Button.js에서 
+
+```js
+function Button({ text }) {
+  return (
+  <button 
+    className = {styles.btn}>{text}</button>
+  )
+}
+```
+
+
+
+이후 페이지에서 Elements를 확인하면
+
+```html
+<button class="Button_btn__-f8Nl">Continue</button>
+```
+
+creact-react-app은 무작위적인 랜덤 class를 갖는다
+
+
+
+App.module.css 만들기
+
+```css
+.title {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 18px;
+}
+```
+
+
+
+App.js에서 App.module.css import 해주고 h1에 className 설정
+
+```js
+import styles from "./App.module.css"
+
+function App() {
+    ...
+    <h1 className={styles.title}>
+}
+```
+
+이후 Elements 확인 시 h1에는 className 이 정해져있음
+
+```css
+<h1 class="App_title__qa9Yc">Hi MJ</h1>
+```
 
 
 
