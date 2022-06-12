@@ -129,3 +129,42 @@ npm start
 
 ## 5.1 Tour of CRA
 
+src폴더 안에 Button.js 만들기
+
+```js
+function Button({ text }) {
+  return <button>{text}</button>
+}
+export default Button
+```
+
+후에 App.js에서 import 해주기
+
+```js
+import Button from "./Button"
+
+function App() {
+  return (
+    <div>
+    ...
+      <Button />
+    </div>
+  )
+}
+```
+
+
+
+```bash
+npm i prop-types
+```
+
+```js
+# src.Button.js
+import PropTypes from "prop-types"
+```
+
+- import PropTypes from "prop-types"
+
+
+
