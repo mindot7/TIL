@@ -121,10 +121,3 @@ const MemorizedBtn = React.memo(Btn)
 ```
 
 
-
-
-## 4.3 Recap
-
-```html
-```
-
