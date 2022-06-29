@@ -1,3 +1,5 @@
+import http from "http"
+import WebSocket from "ws"
 import express from "express"
 
 const app = express()
@@ -14,5 +16,13 @@ app.get("/", (req, res) => res.render("home"))
 // 어떤 url을 입력하더라도 무조건 home으로 가게 만들어주기
 app.get("/*", (req, res) => res.redirect("/"))
 
+// localhost:3000은 http, ws 둘 다 작동시킬 수 있다
 const handleListen = () => console.log(`Listening on http://localhost:3000`)
-app.listen(3000, handleListen)
+
+// http 서버
+const server = http.createServer(app)
+
+// 웹소켓 서버 (http서버가 있으면, 그 위에서 ws 서버를 만들 수 있다)
+const wss = new WebSocket.Server({ server })
+
+server.listen(3000, handleListen)
