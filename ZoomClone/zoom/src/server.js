@@ -25,4 +25,13 @@ const server = http.createServer(app)
 // 웹소켓 서버 (http서버가 있으면, 그 위에서 ws 서버를 만들 수 있다)
 const wss = new WebSocket.Server({ server })
 
+wss.on("connection", (socket) => {
+    console.log("Connected to Browser 👍")
+    socket.on("close", () => console.log("Disconnected from Browser 😢"))
+    socket.on("message", (message) => {
+        console.log(message.toString())
+    })
+    socket.send("hello MJ")
+})
+
 server.listen(3000, handleListen)
