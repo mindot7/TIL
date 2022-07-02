@@ -29,10 +29,20 @@ const sockets = []
 
 wss.on("connection", (socket) => {
     sockets.push(socket)
+    socket["nickname"] = "익명"
     console.log("Connected to Browser 👍")
     socket.on("close", () => console.log("Disconnected from Browser 😢"))
-    socket.on("message", (message) => {
-        sockets.forEach(aSocket => aSocket.send(message))
+    socket.on("message", (msg) => {
+        // 이게 없으면 ul 에 [object blob]으로 뜬다
+        msg = msg.toString('utf-8')
+        const message = JSON.parse(msg)
+        switch(message.type){
+            case "new_message":
+                sockets.forEach((aSocket) => aSocket.send(`${socket.nickname}: ${message.payload}`))
+            case "nickname":
+                socket["nickname"] = message.payload
+        }
+        // console.log(parsed, message)
     })
 })
 
