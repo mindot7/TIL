@@ -1,63 +1,19 @@
-const messageList = document.querySelector("ul")
-const nickForm = document.querySelector("#nick")
-const messageForm = document.querySelector("#message")
-const socket = new WebSocket(`ws://${window.location.host}`)
+const socket = io()
 
-function makeMessage(type, payload) {
-    const msg = {type, payload}
-    return JSON.stringify(msg)
+// home.pug의 div#welcome을 의미함
+const welcome = document.getElementById("welcome")
+
+const form = welcome.querySelector("form")
+
+
+function handleRoomSubmit(event){
+    event.prventDefault()
+    const input = form.querySelector("input")
+    // socket.emit: 어떤 event든지 전송 할 수 있다
+    socket.emit("enter_room", { payload: input.value }, () => {
+        console.log("server is done")
+    })
+    input.value=""
 }
 
-socket.addEventListener("open", () => {
-    console.log("Connected to Server 👍")
-})
-
-// socket.addEventListener("message", (message) => {
-//     console.log("New message: ", message.data, " from the server")
-// })
-
-// socket.addEventListener("message", async(event) => {
-//     console.log(await event.data.text())
-// })
-
-socket.addEventListener("message", (message) => {
-    const li = document.createElement("li")
-    li.innerText = message.data
-    // li를 messageList 안에 넣어주기
-    messageList.append(li)
-})
-
-socket.addEventListener("close", () => {
-    console.log("Disconnected from Server 😢")
-})
-
-
-function handleSubmit(event){
-    event.preventDefault()
-    const input = messageForm.querySelector("input")
-    // 프론트에서 백으로 보내주기
-    socket.send(makeMessage("new_message", input.value))
-    // 입력이 끝나면 비워주기
-    input.value = ""
-}
-
-async function handleMessage(event) {
-    const message = await event.data.text()
-    console.log(message)
-}
-
-// function handleSubmit(event){
-//     event.preventDefault()
-//     const input = messageForm.querySelector("input")
-//     socket.send(input.value)
-//     input.value= ""
-// }
-
-function handleNickSubmit(event){
-    event.preventDefault()
-    const input = nickForm.querySelector("input")
-    socket.send(makeMessage("nickname", input.value))
-}
-
-messageForm.addEventListener("submit", handleSubmit)
-nickForm.addEventListener("submit", handleNickSubmit)
+form.addEventListener("submit", handleRoomSubmit)

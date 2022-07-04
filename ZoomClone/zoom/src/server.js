@@ -1,5 +1,6 @@
 import http from "http"
-import WebSocket from "ws"
+// import WebSocket from "ws"
+import SocketIO from "socket.io"
 import express from "express"
 
 const app = express()
@@ -20,30 +21,43 @@ app.get("/*", (req, res) => res.redirect("/"))
 const handleListen = () => console.log(`Listening on http://localhost:3000`)
 
 // http 서버
-const server = http.createServer(app)
+const httpServer = http.createServer(app)
+const wsServer = SocketIO(httpServer)
 
-// 웹소켓 서버 (http서버가 있으면, 그 위에서 ws 서버를 만들 수 있다)
-const wss = new WebSocket.Server({ server })
-
-const sockets = []
-
-wss.on("connection", (socket) => {
-    sockets.push(socket)
-    socket["nickname"] = "익명"
-    console.log("Connected to Browser 👍")
-    socket.on("close", () => console.log("Disconnected from Browser 😢"))
-    socket.on("message", (msg) => {
-        // 이게 없으면 ul 에 [object blob]으로 뜬다
-        msg = msg.toString('utf-8')
-        const message = JSON.parse(msg)
-        switch(message.type){
-            case "new_message":
-                sockets.forEach((aSocket) => aSocket.send(`${socket.nickname}: ${message.payload}`))
-            case "nickname":
-                socket["nickname"] = message.payload
-        }
-        // console.log(parsed, message)
+// connection을 받을 준비
+wsServer.on("connection", (socket) => {
+    socket.on("enter_room", (msg, done) => {
+        console.log(msg)
+        setTimeout(() => {
+            done()
+        }, 5000)
     })
 })
 
-server.listen(3000, handleListen)
+
+// // 웹소켓 서버 (http서버가 있으면, 그 위에서 ws 서버를 만들 수 있다)
+// const wss = new WebSocket.Server({ server })
+
+// const sockets = []
+
+// wss.on("connection", (socket) => {
+//     sockets.push(socket)
+//     socket["nickname"] = "익명"
+//     console.log("Connected to Browser 👍")
+//     socket.on("close", () => console.log("Disconnected from Browser 😢"))
+//     socket.on("message", (msg) => {
+//         // 이게 없으면 ul 에 [object blob]으로 뜬다
+//         msg = msg.toString('utf-8')
+//         const message = JSON.parse(msg)
+//         switch(message.type){
+//             case "new_message":
+//                 // 자신과 다른 브라우저에 전송
+//                 sockets.forEach((aSocket) => aSocket.send(`${socket.nickname}: ${message.payload}`))
+//             case "nickname":
+//                 socket["nickname"] = message.payload
+//         }
+//         // console.log(parsed, message)
+//     })
+// })
+
+httpServer.listen(3000, handleListen)
