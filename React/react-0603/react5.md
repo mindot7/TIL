@@ -29,6 +29,10 @@ npm start
 
 자동으로 개발용 서버(브라우저)가 열리게 됨
 
+- react-scripts'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는 배치 파일이 아닙니다.
+
+  `npm install -save read-scripts`
+
 
 
 ### 폴더
