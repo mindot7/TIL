@@ -51,8 +51,20 @@ export default App
     - 함수의 첫번째 argument를 현재 state로 보낸다 --> 현재 state를 계산하거나 새로운 state를 만들 수 있다
     - 현재 toDos를 받아와서 새로운 toDo의 array로 return
 
-    
 
-    
 
-    
+
+- map 함수
+
+  - 예전 array를 가져와서 변형한다
+
+  `['there', 'are', 'you', 'are', 'how', 'hello!'].map((item) => item.toUpperCase`
+
+  --> `['THERE', 'ARE', 'YOU', 'ARE', 'HOW', 'HELLO!']`
+
+  
+
+  
+
+
+
