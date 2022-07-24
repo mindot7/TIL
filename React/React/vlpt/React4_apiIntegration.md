@@ -110,3 +110,13 @@ export default Users;
 
 `useReducer`의 장점: 재사용
 
+
+
+
+
+## 3. useAsync 커스텀 Hook 만들어서 사용하기
+
+커스텀 Hook을 만들어서 요청 상태 관리 로직 재사용 방법 알아보기
+
+
+
